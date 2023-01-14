@@ -55,14 +55,27 @@ export default class AnimatedCircularProgress extends React.PureComponent {
     return anim;
   }
 
+ getColorLocations(colorArray) {
+    const splitValue = 100 / colorArray.length;
+    let locationsArray = [];
+    for (i = 1; i <= colorArray.length; i++) {
+      locationsArray.push(splitValue * i);
+    }
+    return locationsArray;
+  }
+
   animateColor() {
     if (!this.props.tintColorSecondary) {
       return this.props.tintColor;
     }
 
+    const outputRange = this.props.colors ? this.props.colors : [this.props.tintColor, this.props.tintColorSecondary];
+
+    const inputRange = this.props.colors ? this.getColorLocations(this.props.colors) : [0,100];
+
     const tintAnimation = this.state.fillAnimation.interpolate({
-      inputRange: [0, 100],
-      outputRange: [this.props.tintColor, this.props.tintColorSecondary],
+      inputRange: inputRange,
+      outputRange: outputRange,
     });
 
     return tintAnimation;
