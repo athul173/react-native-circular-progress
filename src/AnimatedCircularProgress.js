@@ -96,6 +96,7 @@ export default class AnimatedCircularProgress extends React.PureComponent {
 
 AnimatedCircularProgress.propTypes = {
   ...CircularProgress.propTypes,
+  colors:PropTypes.arrayOf(PropTypes.string),
   prefill: PropTypes.number,
   duration: PropTypes.number,
   easing: PropTypes.func,
