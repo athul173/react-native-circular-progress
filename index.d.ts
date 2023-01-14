@@ -54,6 +54,14 @@ declare module 'react-native-circular-progress' {
      * @default 'undefined'
      */
     tintColorSecondary?: string;
+    
+    /**
+     * Custom color array for the progress animation
+     *      
+     * @type {string[]}
+     * @default 'undefined'
+     */
+    colors?: string[];
 
     /**
      * Current progress / tint transparency
