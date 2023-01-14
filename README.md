@@ -111,6 +111,7 @@ The following props can further be used on `AnimatedCircularProgress`:
 Name                | Type                   | Default value           | Description
 --------------------|------------------------|-------------------------|--------------
 prefill             | number (0-100)         | 0                       | Initial fill-value before animation starts
+colors              | array                  |                         | Array of color value strings indicating progress (From 0 to 100)
 duration            | number                 | 500                     | Duration of animation in ms
 delay               | number                 | 0                       | Delay of animation in ms
 easing              | function               | Easing.out(Easing.ease) | Animation easing function
