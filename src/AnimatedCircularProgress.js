@@ -55,7 +55,7 @@ export default class AnimatedCircularProgress extends React.PureComponent {
     return anim;
   }
 
- getColorLocations(colorArray) {
+  getColorLocations(colorArray) {
     const splitValue = 100 / colorArray.length;
     let locationsArray = [];
     for (i = 1; i <= colorArray.length; i++) {
@@ -65,17 +65,17 @@ export default class AnimatedCircularProgress extends React.PureComponent {
   }
 
   animateColor() {
-    if (!this.props.tintColorSecondary) {
-      return this.props.tintColor;
+    if (typeof this.props.tintColors === "string") {
+      return this.props.tintColors;
     }
 
-    const outputRange = this.props.colors ? this.props.colors : [this.props.tintColor, this.props.tintColorSecondary];
-
-    const inputRange = this.props.colors ? this.getColorLocations(this.props.colors) : [0,100];
+    if (this.props.tintColors?.length === 1) {
+      return this.props.tintColors[0];
+    }
 
     const tintAnimation = this.state.fillAnimation.interpolate({
-      inputRange: inputRange,
-      outputRange: outputRange,
+      inputRange: this.getColorLocations(this.props.tintColors),
+      outputRange: this.props.tintColors,
     });
 
     return tintAnimation;
@@ -96,7 +96,6 @@ export default class AnimatedCircularProgress extends React.PureComponent {
 
 AnimatedCircularProgress.propTypes = {
   ...CircularProgress.propTypes,
-  colors:PropTypes.arrayOf(PropTypes.string),
   prefill: PropTypes.number,
   duration: PropTypes.number,
   easing: PropTypes.func,
