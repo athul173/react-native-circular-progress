@@ -27,7 +27,7 @@ export default class CircularProgress extends React.PureComponent {
       size,
       width,
       backgroundWidth,
-      tintColor,
+      tintColors,
       tintTransparency,
       backgroundColor,
       style,
@@ -115,7 +115,7 @@ export default class CircularProgress extends React.PureComponent {
             {fill > 0 && (
               <Path
                 d={circlePath}
-                stroke={tintColor}
+                stroke={tintColors}
                 strokeWidth={width}
                 strokeLinecap={fillLineCap}
                 strokeDasharray={strokeDasharrayTint}
@@ -140,7 +140,10 @@ CircularProgress.propTypes = {
   fill: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   backgroundWidth: PropTypes.number,
-  tintColor: PropTypes.string,
+  tintColors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   tintTransparency: PropTypes.bool,
   backgroundColor: PropTypes.string,
   rotation: PropTypes.number,
@@ -155,7 +158,7 @@ CircularProgress.propTypes = {
 };
 
 CircularProgress.defaultProps = {
-  tintColor: 'black',
+  tintColors: "black",
   tintTransparency: true,
   rotation: 90,
   lineCap: 'butt',
