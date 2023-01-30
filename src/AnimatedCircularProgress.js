@@ -88,7 +88,7 @@ export default class AnimatedCircularProgress extends React.PureComponent {
       <AnimatedProgress
         {...other}
         fill={this.state.fillAnimation}
-        tintColor={this.animateColor()}
+        tintColors={this.animateColor()}
       />
     );
   }
